@@ -47,7 +47,11 @@ export const routes = [
     path: buildRoutePath('/users/:id'),
     handler: async (req, res) => {
       const { id } = req.params
+      const { name, email } = req.body
 
+      database.update('users', id, { name, email })
+
+      return res.writeHead(204).end()
     }
   }
 ]
